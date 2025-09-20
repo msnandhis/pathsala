@@ -5,7 +5,7 @@ import { PlusIcon, TrendingUpIcon, UsersIcon, StarIcon, DollarSignIcon, EyeIcon,
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
+// Progress component removed to fix build issues
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Header } from '@/components/layout/header';
 
@@ -309,7 +309,12 @@ export default function InstructorDashboard() {
                             <span>Completion Rate</span>
                             <span>{course.completionRate}%</span>
                           </div>
-                          <Progress value={course.completionRate} className="h-2" />
+                          <div className="w-full bg-gray-200 rounded-full h-2">
+                            <div
+                              className="bg-brand-green h-2 rounded-full"
+                              style={{ width: `${course.completionRate}%` }}
+                            ></div>
+                          </div>
                         </div>
                         <div className="text-sm text-gray-600">{course.reviews} reviews</div>
                       </div>
@@ -365,7 +370,12 @@ export default function InstructorDashboard() {
                             <span className="font-medium">{course.name}</span>
                             <span className="text-sm text-gray-600">{course.students.toLocaleString()} students</span>
                           </div>
-                          <Progress value={course.percentage} className="h-2" />
+                          <div className="w-full bg-gray-200 rounded-full h-2">
+                            <div
+                              className="bg-brand-green h-2 rounded-full"
+                              style={{ width: `${course.percentage}%` }}
+                            ></div>
+                          </div>
                         </div>
                       </div>
                     ))}

@@ -5,7 +5,7 @@ import { ChevronRightIcon, CheckIcon, BookOpenIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
+// Progress component removed to fix build issues
 
 const interests = [
   { id: 1, name: "Web Development", icon: "💻", description: "HTML, CSS, JavaScript, React" },
@@ -118,7 +118,12 @@ export default function OnboardingPage() {
             <span className="text-white/90 text-sm">Step {currentStep} of {totalSteps}</span>
             <span className="text-white/90 text-sm">{Math.round(progress)}% complete</span>
           </div>
-          <Progress value={progress} className="h-2" />
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className="bg-brand-green h-2 rounded-full"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
         </div>
 
         {/* Content */}

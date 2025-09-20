@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Progress } from '@/components/ui/progress';
+// Progress component removed to fix build issues
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Header } from '@/components/layout/header';
@@ -137,6 +137,8 @@ const reviews = [
     comment: "Great course overall. The content is comprehensive and well-structured. Would love to see more advanced topics covered."
   }
 ];
+
+// generateStaticParams removed - cannot use with "use client"
 
 export default function CoursePage() {
   const [isEnrolled, setIsEnrolled] = useState(false);
@@ -300,7 +302,12 @@ export default function CoursePage() {
                           <span>Your Progress</span>
                           <span>{totalCompletedVideos}/{totalVideos} videos completed</span>
                         </div>
-                        <Progress value={progressPercentage} className="w-full" />
+                        <div className="w-full bg-gray-200 rounded-full h-2">
+                            <div
+                              className="bg-brand-green h-2 rounded-full"
+                              style={{ width: `${progressPercentage}%` }}
+                            ></div>
+                          </div>
                       </div>
                     )}
                   </CardHeader>

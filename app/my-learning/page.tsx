@@ -5,7 +5,7 @@ import { PlayIcon, ClockIcon, CheckCircleIcon, BookmarkIcon, TrendingUpIcon } fr
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
+// Progress component removed to fix build issues
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Header } from '@/components/layout/header';
 
@@ -201,7 +201,12 @@ export default function MyLearningPage() {
                               {course.completedVideos}/{course.totalVideos} videos completed
                             </span>
                           </div>
-                          <Progress value={course.progress} className="w-full" />
+                          <div className="w-full bg-gray-200 rounded-full h-2">
+                              <div
+                                className="bg-brand-green h-2 rounded-full"
+                                style={{ width: `${course.progress}%` }}
+                              ></div>
+                            </div>
                           <div className="flex justify-between items-center mt-1 text-xs text-gray-500">
                             <span>{course.progress}% complete</span>
                             <span>{course.totalDuration} total</span>
@@ -310,7 +315,12 @@ export default function MyLearningPage() {
                               <span className="text-gray-600">Progress</span>
                               <span className="text-gray-600">{achievement.progress}%</span>
                             </div>
-                            <Progress value={achievement.progress} className="w-full" />
+                            <div className="w-full bg-gray-200 rounded-full h-2">
+                                  <div
+                                    className="bg-brand-green h-2 rounded-full"
+                                    style={{ width: `${achievement.progress}%` }}
+                                  ></div>
+                                </div>
                           </div>
                         )}
                       </div>
