@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Playfair_Display, Inter } from 'next/font/google';
+import { Playfair_Display } from 'next/font/google';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -8,11 +8,11 @@ const playfair = Playfair_Display({
   weight: ['400', '600']
 });
 
-const inter = Inter({
-  subsets: ['latin'],
+// Using system fonts instead of Google Fonts for better reliability
+const inter = {
   variable: '--font-inter',
-  weight: ['400', '500', '600']
-});
+  className: 'font-sans'
+};
 
 export const metadata: Metadata = {
   title: 'LearnHub - Your Learning Marketplace',
@@ -26,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="font-inter bg-white text-gray-900">{children}</body>
+      <body className={`${inter.className} bg-white text-gray-900`}>{children}</body>
     </html>
   );
 }
